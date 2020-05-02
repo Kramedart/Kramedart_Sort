@@ -53,3 +53,15 @@ int makearr( int arr[], int length, int low, int high, unsigned seed )
     delete []temparr;
     return 1 ;
 }
+
+//数组复制,正常返回数组长度，异常返回-1
+int copyarr( int orign_arr[], int orign_length, int copy_arr[], int copy_length )
+{
+    if( orign_length <= 0 || copy_length <= 0 )
+        return -1 ;
+    //只复制能复制的部分
+    int length = copy_length < orign_length ? copy_length : orign_length ;
+    for( int i = 0 ; i < length ; i++ )
+        copy_arr[i] = orign_arr[i] ;
+    return length ;
+}
