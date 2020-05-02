@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <time.h>
-#include <iostream>
 #include "..\include\array_make.h"
 
 using namespace std;

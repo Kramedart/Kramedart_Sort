@@ -4,7 +4,7 @@
 
 using namespace std;
 
-const int LENGTH = 100 ;                                                                 //待排序数组长度
+const int LENGTH = 20 ;                                                                 //待排序数组长度
 const int LOW = -200 ;                                                                   //待排序数组区间最小值
 const int HIGH = 200 ;                                                                   //待排序数组区间最大值
 
@@ -26,7 +26,7 @@ int main()
         cout << orign_arr[i] << "  " ;
     cout << endl << endl ;
 
-    copyarr( orign_arr, sizeof(orign_arr)/sizeof(orign_arr[0]), arr, sizeof(arr)/sizeof(arr[0]));//复制原数组，计数器清零
+    copyarr( orign_arr, sizeof(orign_arr)/sizeof(orign_arr[0]), arr, sizeof(arr)/sizeof(arr[0]) );//复制原数组，计数器清零
     compare_count = 0 ;
     swap_count = 0 ;
     //插入排序算法
@@ -40,9 +40,21 @@ int main()
     cout <<"Insertion sort: swap_count = " << swap_count << endl ;
     cout << endl ;
 
+    copyarr( orign_arr, sizeof(orign_arr)/sizeof(orign_arr[0]), arr, sizeof(arr)/sizeof(arr[0]) );//复制原数组，计数器清零
+    compare_count = 0 ;
+    swap_count = 0 ;
     //希尔排序算法
+    cout << "Shell sort:"<< endl ;
+    shell_sort( arr, sizeof(arr)/sizeof(arr[0]), &compare_count, &swap_count ) ;
+    cout <<"Sorted array is " <<  endl ;
+    for( int i = 0 ; i < LENGTH ; i++ )                                                         //显示希尔排序后的数组
+        cout << arr[i] << "  " ;
+    cout << endl ;
+    cout <<"Shell sort: compare_count = " << compare_count << endl ;
+    cout <<"Shell sort: swap_count = " << swap_count << endl ;
+    cout << endl ;
 
-    copyarr( orign_arr, sizeof(orign_arr)/sizeof(orign_arr[0]), arr, sizeof(arr)/sizeof(arr[0]));//复制原数组，计数器清零
+    copyarr( orign_arr, sizeof(orign_arr)/sizeof(orign_arr[0]), arr, sizeof(arr)/sizeof(arr[0]) );//复制原数组，计数器清零
     compare_count = 0 ;
     swap_count = 0 ;
     //快速排序算法
