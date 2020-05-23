@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <iostream>
 #include <time.h>
 #include "..\include\array_make.h"
 
@@ -33,23 +34,28 @@ int makearr( int arr[], int length, int low, int high, unsigned seed )
         srand( (unsigned)time(NULL) );
 
     //洗牌算法
-    int *temparr = new int[section] ;
-    for( int i = 0 ; i < section ; i++ )
-        temparr[i] = low + i ;
-    for( int i = 0 , temp = 0 ; i < length ; i++ )
+    int *temparr = NULL;
+    temparr = new int[section] ;
+    if( temparr != NULL )
     {
-        temp = section - rand()%(section-i) - 1 ;
-        if( temp != i )                             //如果成功洗牌就交换，否则位置不变
+        for( int i = 0 ; i < section ; i++ )
+            temparr[i] = low + i ;
+        for( int i = 0 , temp = 0 ; i < length ; i++ )
         {
-            temparr[i] ^= temparr[temp] ;
-            temparr[temp] ^= temparr[i] ;
-            temparr[i] ^= temparr[temp] ;
+            temp = section - rand()%(section-i) - 1 ;
+            if( temp != i )                         //如果成功洗牌就交换，否则位置不变
+            {
+                temparr[i] ^= temparr[temp] ;
+                temparr[temp] ^= temparr[i] ;
+                temparr[i] ^= temparr[temp] ;
+            }
         }
-    }
 
-    for( int i = 0 ; i < length ; i++ )
-        arr[i] = temparr[i] ;
+        for( int i = 0 ; i < length ; i++ )
+            arr[i] = temparr[i] ;
+    }
     delete []temparr;
+    temparr = NULL;
     return 1 ;
 }
 
